@@ -1,0 +1,16 @@
+galaxy_info:
+  author: Eric Anderson
+  description: Deploy's the AVI Vantage Controller on Cisco CSP
+  company: Avi Networks
+  issue_tracker_url: https://github.com/avinetworks/ansible-role-avicontroller-csp/issues
+  license: BSD
+  min_ansible_version: 2.4.0
+  github_branch: master
+  galaxy_tags:
+    - avi
+    - controller
+    - loadbalancer
+    - avinetworks
+    - avicontroller
+    - csp
+dependencies: []
