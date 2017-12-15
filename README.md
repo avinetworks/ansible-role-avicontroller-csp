@@ -1,7 +1,5 @@
 # avinetworks.avicontroller-csp
 
-[![Ansible Galaxy](https://img.shields.io/badge/galaxy-avinetworks.avicontroller-blue.svg)](https://galaxy.ansible.com/avinetworks/avicontroller/)
-
 Using this module you are able to install the Avi Vantage Controlller, to your system. However, minimum requirements must be met.
 
 > **Warning:**  
