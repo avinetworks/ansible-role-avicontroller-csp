@@ -1,9 +1,6 @@
 ---
 # defaults file for avinetworks.avicontroller-csp
 
-# standard parameters
-con_skip_requirements: false
-
 # parameters for the CSP deployment
 con_csp_user: ~
 con_csp_password: ~
