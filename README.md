@@ -1,6 +1,5 @@
-# avinetworks.avicontroller
+# avinetworks.avicontroller-csp
 
-[![Build Status](https://travis-ci.org/avinetworks/ansible-role-avicontroller.svg?branch=master)](https://travis-ci.org/avinetworks/ansible-role-avicontroller)
 [![Ansible Galaxy](https://img.shields.io/badge/galaxy-avinetworks.avicontroller-blue.svg)](https://galaxy.ansible.com/avinetworks/avicontroller/)
 
 Using this module you are able to install the Avi Vantage Controlller, to your system. However, minimum requirements must be met.
@@ -10,7 +9,7 @@ This Ansible role is not meant to be ran repeatedly on the host. It's meant for 
 
 ## Requirements
 
-Requires Docker to be installed. We have created `avinetworks.docker` to install Docker on a host. Please run that role first, or manually install Docker.
+A Cisco CSP Device
 
 ## Role Variables
 
