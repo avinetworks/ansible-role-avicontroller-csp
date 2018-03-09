@@ -18,6 +18,7 @@ con_csp_num_cpu: 4
 con_csp_memory_gb: 16
 con_csp_memory_mb: "{{ con_csp_memory_gb|int * 1024 }}"
 con_csp_platform: csp-2100
+con_csp_compat_version: 02.02.04.00
 con_csp_vnics:
   - nic: '0'
     type: access
