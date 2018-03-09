@@ -21,9 +21,10 @@ These are only marked required, for when you are using CSP Deployment.
 | `con_csp_qcow_image_file` | No | `controller.qcow` | Relative or absolute location of the controller qcow |
 | `con_csp_mgmt_ip` | Yes | `None` | IP of the controller on the management network. |
 | `con_csp_mgmt_mask` | Yes | `None` | Subnet mask that the controller will require. |
-| `con_csp_default_gw` | Yes | `None` | Default gateway for the controller |
-| `con_csp_disk_size` | No | `64` | Amount of disk space in GB for the controller |
-| `con_csp_service_name` | No | `avi-controller` | Name of the service to be created on the CSP |
+| `con_csp_default_gw` | Yes | `None` | Default gateway for the controller. |
+| `con_csp_disk_size` | No | `64` | Amount of disk space in GB for the controller. |
+| `con_csp_disk_type` | No | `virtio` | Disk type in CSP. Recommended to use the default. |
+| `con_csp_service_name` | No | `avi-controller` | Name of the service to be created on the CSP. |
 | `con_csp_num_cpu` | No | `4` | Number of CPUs to be allocated to the Controller |
 | `con_csp_memory_gb` | No | `16` | Amount of memory in GB allocated to the Controller |
 | `con_csp_hsm_ip` | No | `None` | IP Address and Subnet for Dedicated HSM interface, ex. 10.160.100.221/24 |
@@ -31,6 +32,8 @@ These are only marked required, for when you are using CSP Deployment.
 | `con_csp_hsm_static_routes` | No | `None` | Static routes for HSM, ex. 10.128.1.0/24 via 10.160.100.1 |
 | `con_csp_hsm_vnic_id` | No | `None` | VNIC id, of the HSM interface configured on this interface ex. 1 |
 | `con_csp_bond_ifs` | No | `None` | Bonds the listed interfaces together. Ex. '1,2 3,4' bonds 1 with 2, and 3 with 4 |
+| `con_csp_platform` | No | `csp-2100` | CSP platform model. |
+
 
 ## Example Playbook
 
@@ -75,4 +78,7 @@ BSD
 ## Author Information
 
 Eric Anderson  
-[Avi Networks](http://avinetworks.com)
+[Avi Networks](https://avinetworks.com)
+
+Avi SDK Team
+avi-sdk@avinetworks.com
