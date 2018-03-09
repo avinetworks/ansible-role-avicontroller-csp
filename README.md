@@ -78,4 +78,7 @@ BSD
 ## Author Information
 
 Eric Anderson  
-[Avi Networks](avi-sdk@avinetworks.com)
+[Avi Networks](https://avinetworks.com)
+
+Avi SDK Team
+avi-sdk@avinetworks.com
