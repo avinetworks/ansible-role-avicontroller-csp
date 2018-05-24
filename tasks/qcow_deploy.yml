@@ -29,6 +29,24 @@
       failed_when: not con_qcow_status.stat.exists
     - name: Avi Controller | CSP | Image deploy | SCP qcow to csp device
       shell: sshpass -p {{ con_csp_password }} scp -o StrictHostKeyChecking=no {{ con_csp_qcow_image_file }} {{ con_csp_user }}@{{ inventory_hostname }}:/osp/repository
-      delegate_to: localhost
+      register: command_result
       failed_when: false
+      delegate_to: localhost
+    - name: Avi Controller | CSP | Image deploy | Verify the qcow image copied successfully
+      uri:
+        url: "https://{{ inventory_hostname }}/api/operational/repository/image/{{ con_csp_qcow_image_name }}/_operations/get_image"
+        method: POST
+        user: "{{ con_csp_user }}"
+        password: "{{ con_csp_password }}"
+        force_basic_auth: yes
+        headers:
+          Accept: '*/*'
+        validate_certs: false
+        return_content: true
+      register: con_image_verify
+      delegate_to: localhost
+    - name: Avi Controller | CSP | Image deploy | Fail if SCP verification faild
+      fail:
+        msg: "SCP to CSP host failed {{ command_result }}"
+      when: con_image_verify.status != 200
   when: con_image_exists.status != 200
