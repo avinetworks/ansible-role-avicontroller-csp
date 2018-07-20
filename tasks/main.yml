@@ -12,3 +12,6 @@
 
 - name: Avi Controller | CSP | Service deploy
   include: service_deploy.yml
+
+- name: Avi Controller | CSP | Validate controller service
+  include: validate_controller.yml

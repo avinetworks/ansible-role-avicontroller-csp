@@ -88,6 +88,5 @@
     failed_when: con_csp_service.status != 201
     changed_when: con_csp_service.status == 201
     delegate_to: localhost
-
   when:
     - con_csp_service_exists.status != 200
