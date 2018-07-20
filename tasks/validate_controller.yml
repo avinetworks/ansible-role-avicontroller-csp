@@ -10,6 +10,3 @@
   until: task_result.status == 200
   ignore_errors: yes
   delegate_to: localhost
-
--  Avi Controller | CSP | Fail if controller not available
-  
