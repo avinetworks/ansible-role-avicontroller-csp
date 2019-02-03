@@ -20,7 +20,7 @@
   when: con_csp_resource_rsp.status == 200
 
 - name: Avi Controller | CSP | Service deploy | CSP resource info
-  debug: msg="{{con_csp_resource_info['resource:resource']}}"
+  debug: msg="{{ con_csp_resource_info['resource:resource'] }}"
 
 - name: Avi Controller | CSP | Service deploy | Check if service already exists
   uri:
@@ -38,7 +38,8 @@
   delegate_to: localhost
 
 - block:
-    - set_fact:
+    - name: Avi Controller | CSP | Service deploy | Get image exists content
+      set_fact:
         con_csp_service_exists_json: "{{ con_csp_service_exists.content|from_json }}"
     - debug: msg="Service {{ con_csp_service_exists_json['vsb:service'].name }} already exists."
   when: con_csp_service_exists.status == 200
@@ -49,7 +50,7 @@
     set_fact:
       con_csp_service_info:
         disk_size: "{{ con_csp_disk_size|int }}"
-        disk_type: "{{ con_csp_disk_type | default('virtio')}}"
+        disk_type: "{{ con_csp_disk_type|default('virtio') }}"
         name: "{{ con_csp_service_name }}"
         power: 'on'
         iso_name: "{{ con_csp_qcow_image_name }}"
@@ -62,12 +63,12 @@
 
   - name: Avi Controller | CSP | Service deploy | Update service info for CSP > 2.2.4
     set_fact:
-      con_csp_service_info: "{{con_csp_service_info | combine({'disk-resize': true})}}"
+      con_csp_service_info: "{{ con_csp_service_info|combine({'disk-resize': true}) }}"
     when:
       - con_csp_resource_info['resource:resource'].csp_version >= "02.02.04.00"
 
   - name: Avi Controller | CSP | Service deploy | Using service info
-    debug: msg="{{con_csp_service_info}}"
+    debug: msg="{{ con_csp_service_info }}"
 
   - name: Avi Controller | CSP | Service deploy | Create the service
     uri:
