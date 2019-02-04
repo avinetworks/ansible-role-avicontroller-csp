@@ -15,7 +15,8 @@
   delegate_to: localhost
 
 - block:
-    - set_fact:
+    - name: Avi Controller | CSP | Metafile deploy | Get metafile exists content
+      set_fact:
         con_csp_metafile_exists_json: "{{ con_csp_metafile_exists.content|from_json }}"
     - debug: msg="Metafile {{ con_csp_metafile_exists_json.output.name }} already exists."
   when: con_csp_metafile_exists.status == 200
@@ -28,7 +29,9 @@
       delegate_to: localhost
       register: con_avi_metafile
     - name: Avi Controller | CSP | Metafile deploy | Deploy metafile {{ con_csp_metafile_name }} to the CSP device
-      shell: sshpass -p {{ con_csp_password }} scp -o StrictHostKeyChecking=no /tmp/{{ con_csp_metafile_name }} {{ con_csp_user }}@{{ inventory_hostname }}:/osp/repository
+      shell: >-
+        sshpass -p {{ con_csp_password }} scp -o StrictHostKeyChecking=no /tmp/{{ con_csp_metafile_name }}
+        {{ con_csp_user }}@{{ inventory_hostname }}:/osp/repository
       delegate_to: localhost
       failed_when: false
   when: con_csp_metafile_exists.status != 200

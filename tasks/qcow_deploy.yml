@@ -15,7 +15,8 @@
   delegate_to: localhost
 
 - block:
-    - set_fact:
+    - name: Avi Controller | CSP | Image deploy | Get image exists content
+      set_fact:
         con_image_exists_json: "{{ con_image_exists.content|from_json }}"
     - debug: msg="Image {{ con_image_exists_json.output.name }} already exists."
   when: con_image_exists.status == 200
@@ -28,7 +29,9 @@
       register: con_qcow_status
       failed_when: not con_qcow_status.stat.exists
     - name: Avi Controller | CSP | Image deploy | SCP qcow to csp device
-      shell: sshpass -p {{ con_csp_password }} scp -o StrictHostKeyChecking=no {{ con_csp_qcow_image_file }} {{ con_csp_user }}@{{ inventory_hostname }}:/osp/repository
+      shell: >-
+        sshpass -p {{ con_csp_password }} scp -o StrictHostKeyChecking=no {{ con_csp_qcow_image_file }}
+        {{ con_csp_user }}@{{ inventory_hostname }}:/osp/repository
       register: command_result
       failed_when: false
       delegate_to: localhost
