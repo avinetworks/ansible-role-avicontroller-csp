@@ -1,4 +1,4 @@
-{% for key,value in con_csp_meta_options.iteritems() %}
+{% for key,value in con_csp_meta_options.items() %}
 {% if value != '' %}
 {% set myvalue = con_csp_meta_config.update({ key: value }) %}
 {% endif %}
