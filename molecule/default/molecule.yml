@@ -3,16 +3,19 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint tasks -c .yamllint
+  ansible-lint
+  flake8
 platforms:
   - name: instance
     image: centos:7
 provisioner:
   name: ansible
-  lint:
-    name: ansible-lint
+#  lint:
+#    name: ansible-lint
 verifier:
   name: testinfra
-  lint:
-    name: flake8
+#  lint:
+#    name: flake8
