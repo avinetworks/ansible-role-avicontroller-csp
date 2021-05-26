@@ -1,6 +1,6 @@
 ---
 galaxy_info:
-  role_name: avicontroller-csp
+  role_name: avicontroller_csp
   author: Avi Networks
   description: Deploy's the AVI Vantage Controller on Cisco CSP
   company: Avi Networks
